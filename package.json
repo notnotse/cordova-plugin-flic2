@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-flic2",
+  "version": "0.0.1",
+  "description": "Cordova Flic2 Plugin",
+  "cordova": {
+    "id": "cordova-plugin-flic2",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "flic2",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Not Not Consulting",
+  "license": "MIT"
+}

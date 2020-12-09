@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-flic2" version="0.0.1">
+    <name>Flic2</name>
+    <description>Cordova Flic2 Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,flic2</keywords>
+    <js-module src="src/www/flic2.js" name="flic2">
+        <clobbers target="flic2" />
+    </js-module>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Flic2">
+                <param name="android-package" value="io.notnot.cordova.flic2.Flic2"/>
+            </feature>
+        </config-file>
+        <framework src="io.flic:flic2lib-android:1.+" />
+        <source-file src="src/android/Flic2.java" target-dir="src/io/notnot/cordova/flic2" />
+    </platform>
+</plugin>
