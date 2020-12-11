@@ -333,4 +333,4 @@ const flic2 = {
   SCAN_RESULT,
 };
 
-window.flic2 = flic2;
+module.exports = flic2
