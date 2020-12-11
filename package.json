@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-flic2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cordova Flic2 Plugin",
   "cordova": {
     "id": "cordova-plugin-flic2",
@@ -15,5 +15,10 @@
     "cordova-android"
   ],
   "author": "Not Not Consulting",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/notnotse/cordova-plugin-flic2",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/notnotse/cordova-plugin-flic2.git"
+  }
 }
