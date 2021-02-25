@@ -30,6 +30,7 @@ const SCAN_RESULT = {
 
 const voidCallback = (_) => {};
 const buttonListeners = {};
+let globalButtonListeners = [];
 
 function buttonCallback(event) {
   if (buttonListeners[event.uuid] && buttonListeners[event.uuid][event.type]) {
@@ -37,6 +38,13 @@ function buttonCallback(event) {
       callback(event.payload)
     );
   }
+  globalButtonListeners
+    .filter((globalButtonListener) => {
+      return globalButtonListener.eventType === event.type;
+    })
+    .forEach((globalButtonListener) => {
+      globalButtonListener.callback(event);
+    });
 }
 
 function addButtonCallback(uuid, callback, eventType) {
@@ -113,6 +121,24 @@ function disconnectOrAbortPendingConnection(uuid) {
     "Flic2",
     "button.disconnectOrAbortPendingConnection",
     [uuid]
+  );
+}
+
+function on(eventType, callback) {
+  if (!pluginInit) {
+    return;
+  }
+  globalButtonListeners.push({ eventType, callback });
+}
+
+function un(callback) {
+  if (!pluginInit) {
+    return;
+  }
+  globalButtonListeners = globalButtonListeners.filter(
+    (globalButtonListener) => {
+      return globalButtonListener.callback !== callback;
+    }
   );
 }
 
@@ -328,9 +354,12 @@ const flic2 = {
   getButtons,
   connect,
   disconnectOrAbortPendingConnection,
+  on,
+  un,
   setName,
   setAutoDisconnectTime,
   SCAN_RESULT,
+  BUTTON_EVENT_TYPES,
 };
 
-module.exports = flic2
+module.exports = flic2;
